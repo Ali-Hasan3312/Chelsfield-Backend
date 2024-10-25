@@ -6,23 +6,25 @@ export const HireHallController = async (
     res: Response,
     next: NextFunction
 ) => {
-      const { name, email, phoneNumber, option, message } = req.body;
-        if (!name || !email || !phoneNumber || !option || !message) {
+      const { name, email, phone, bookingType, message } = req.body;
+        if (!name || !email || !phone || !bookingType || !message) {
             throw new Error("Please fill all the fields");
         }
         const storedMessage = `
         Name: ${name}
         Email: ${email}
-        Phone Number: ${phoneNumber}
-        Option: ${option}
+        Phone Number: ${phone}
+        Selection: ${bookingType}
         Message: ${message}
         `;
+        console.log(storedMessage);
+        
         
         try {
             await sendEmail({
                 email: "alihasan331229@gmail.com",
                 subject: `
-                ${name} wants to hire a hall `,
+                ${name} wants to ${bookingType} `,
                 message: storedMessage,
                
             });

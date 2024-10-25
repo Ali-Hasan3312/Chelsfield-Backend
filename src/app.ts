@@ -15,7 +15,7 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
 app.use(cors({
-    origin: 'https://drshahidmughal.ironstepsoftware.com',
+    origin: 'https://chelsefieldcricketclub.hymglobal.com',
     credentials: true
 }));
 app.listen(port,()=>{

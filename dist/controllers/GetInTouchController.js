@@ -7,15 +7,15 @@ exports.GetInTouchController = void 0;
 // import ErrorHandler from "../utils/errorHandler";
 const sendEmail_1 = __importDefault(require("../utils/sendEmail"));
 const GetInTouchController = async (req, res, next) => {
-    const { name, email, phoneNumber, message } = req.body;
+    const { name, email, phone, message } = req.body;
     console.log("Name:", name);
-    if (!name || !email || !phoneNumber || !message) {
+    if (!name || !email || !phone || !message) {
         throw new Error("Please fill all the fields");
     }
     const storedMessage = `
         Name: ${name}
         Email: ${email}
-        Phone Number: ${phoneNumber}
+        Phone Number: ${phone}
         Message: ${message}`;
     try {
         await (0, sendEmail_1.default)({

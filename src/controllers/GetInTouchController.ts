@@ -7,16 +7,16 @@ export const GetInTouchController = async (
     res: Response,
     next: NextFunction
 ) => {
-      const { name, email, phoneNumber, message } = req.body;
+      const { name, email, phone, message } = req.body;
       console.log("Name:", name);
       
-        if (!name || !email || !phoneNumber || !message) {
+        if (!name || !email || !phone || !message) {
             throw new Error("Please fill all the fields");
         }
         const storedMessage = `
         Name: ${name}
         Email: ${email}
-        Phone Number: ${phoneNumber}
+        Phone Number: ${phone}
         Message: ${message}`;
         try {
             await sendEmail({
