@@ -1,7 +1,6 @@
 import cors from "cors";
 import dotenv from "dotenv";
 import express from "express";
-import { connectDB } from "./db/database";
 import Memberrouter from "./routes/UserRoute";
 import GetInTouchRouter from "./routes/GetIntouchRoute";
 import HireHallRouter from "./routes/HireHallRoute";
@@ -10,7 +9,7 @@ const app = express()
 dotenv.config({path: "./config/config.env"})
 
 const port = process.env.PORT || 3000;
-connectDB();
+
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
