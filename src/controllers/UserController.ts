@@ -108,7 +108,18 @@ export const MembershipController = async (
 
     // Prepare email with attachment
     const emailOptions = {
-        email: 'alihasan331229@gmail.com',
+        email: 'admin@chelsfieldcc.co.uk',
+        subject: `New Membership`,
+        message: `New membership registration data attached.`,
+        attachments: [
+            {
+                filename: 'membership_data.xlsx',
+                path: filePath,
+            },
+        ],
+    };
+    const emailOptions2 = {
+        email,
         subject: `New Membership`,
         message: `New membership registration data attached.`,
         attachments: [
@@ -121,6 +132,7 @@ export const MembershipController = async (
 
     try {
         await sendEmail(emailOptions);
+        await sendEmail(emailOptions2);
         res.status(200).json({
             success: true,
             message: 'Email sent successfully',

@@ -111,7 +111,18 @@ const MembershipController = async (req, res, next) => {
     (0, fs_1.writeFileSync)(filePath, XLSX.write(workbook, { bookType: 'xlsx', type: 'buffer' }));
     // Prepare email with attachment
     const emailOptions = {
-        email: 'alihasan331229@gmail.com',
+        email: 'admin@chelsfieldcc.co.uk',
+        subject: `New Membership`,
+        message: `New membership registration data attached.`,
+        attachments: [
+            {
+                filename: 'membership_data.xlsx',
+                path: filePath,
+            },
+        ],
+    };
+    const emailOptions2 = {
+        email,
         subject: `New Membership`,
         message: `New membership registration data attached.`,
         attachments: [
@@ -123,6 +134,7 @@ const MembershipController = async (req, res, next) => {
     };
     try {
         await (0, sendEmail_1.default)(emailOptions);
+        await (0, sendEmail_1.default)(emailOptions2);
         res.status(200).json({
             success: true,
             message: 'Email sent successfully',
